@@ -1,0 +1,54 @@
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .25s ease-in-out;
+  cursor: pointer;
+  gap: 16px;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.button-size {
+  &__small {
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  &__medium {
+    padding: 5px 20px;
+    border-radius: 3px;
+  }
+
+  &__large {
+    padding: 5px 38px;
+    border-radius: 3px;
+  }
+
+
+}
+
+.button-class {
+  &__green {
+    background-color: var(--dark-green);
+    color: var(--white);
+
+    &:hover {
+      color: var(--dark-green);
+      background-color: var(--white);
+    }
+  }
+
+  &__gray {
+    color: var(--black);
+    background-color: var(--light-gray-bg);
+
+    &:hover {
+      color: var(--black);
+      background-color: var(--dark-green);
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.home {
+  overflow: auto;
+
+  &-wrapper {
+    padding: 15px;
+  }
+
+  &-content {
+    &__button {
+      padding-bottom: 20px;
+    }
+
+    app-button {
+      display: inline-block;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 15px;
+
+  &-label {
+    &__title {
+      font-size: 15px;
+      line-height: 18px;
+      padding-bottom: 3px;
+    }
+
+    &__input {
+      width: 400px;
+      padding: 10px;
+      border: 1px solid var(--black);
+    }
+  }
+}

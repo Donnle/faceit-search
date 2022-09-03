@@ -1,0 +1,25 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background-color: var(--black);
+
+  &-drag {
+    -webkit-app-region: drag;
+  }
+
+  &-buttons {
+    display: flex;
+    padding: 5px 10px;
+    gap: 10px;
+
+    & > span {
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+
+      & > img {
+        width: 100%;
+      }
+    }
+  }
+}

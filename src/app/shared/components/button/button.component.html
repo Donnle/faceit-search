@@ -1,0 +1,7 @@
+<button [ngClass]="[
+  buttonData.size ? 'button-size__' + buttonData.size : 'button-size__medium',
+  buttonData.classMode ? 'button-class__' + buttonData.classMode : 'button-class__default'
+]">
+  <span>{{buttonData.name}}</span>
+  <img *ngIf="buttonData.icon" [src]="buttonData.icon" alt="icon"/>
+</button>

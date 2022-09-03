@@ -1,4 +1,4 @@
-import {app, BrowserWindow, screen} from 'electron';
+import {app, BrowserWindow, ipcMain, screen} from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -8,14 +8,17 @@ const args = process.argv.slice(1),
 
 function createWindow(): BrowserWindow {
 
-  const size = screen.getPrimaryDisplay().workAreaSize;
+  const size = screen.getPrimaryDisplay().size;
+  console.log(size)
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
+    x: Math.floor(size.width / 2) - 320,
+    y: Math.floor(size.height / 2) - 180,
+    frame: false,
+    resizable: false,
+    width: 640,
+    height: 360,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve),
@@ -34,7 +37,7 @@ function createWindow(): BrowserWindow {
     let pathIndex = './index.html';
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
+      // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
 
@@ -81,3 +84,11 @@ try {
   // Catch Error
   // throw e;
 }
+
+ipcMain.on('close-application', () => {
+  win.close()
+})
+
+ipcMain.on('minimize-application', () => {
+  win.minimize()
+})

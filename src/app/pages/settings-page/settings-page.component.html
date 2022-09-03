@@ -1,0 +1,35 @@
+<div class="settings">
+  <div class="settings-wrapper">
+    <div class="settings-content">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form" class="settings-content-form form">
+        <label class="form-field">
+          <h3>Bearer Token*</h3>
+          <p>Цей токен дозволяє починати за вас гру</p>
+          <input formControlName="bearer" placeholder="Введіть ваш токен" required="true" type="text"/>
+        </label>
+        <label class="form-field">
+          <h3>Nickname on FaceIT*</h3>
+          <input formControlName="nickname" placeholder="Введіть ваш nickname" required="true" type="text"/>
+        </label>
+        <label class="form-field">
+          <h3>Min / Max enemy level</h3>
+          <div class="form-field__flexbox">
+            <input class="form-field__flexbox-min" formControlName="minLevel" max="10" min="1" placeholder="1"
+                   type="number"/>
+            <div class="form-field__flexbox-text">
+              <span>≤</span>
+              <span>enemy level</span>
+              <span>≤</span>
+            </div>
+            <input class="form-field__flexbox-max" formControlName="maxLevel" max="10" min="1" placeholder="10"
+                   type="number"/>
+          </div>
+        </label>
+        <app-button [buttonData]="buttonData"></app-button>
+      </form>
+      <div *ngIf="popupInfo" class="settings-content__error">
+        <span>{{popupInfo}}</span>
+      </div>
+    </div>
+  </div>
+</div>

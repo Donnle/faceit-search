@@ -1,0 +1,23 @@
+<div class="home">
+  <div class="home-wrapper">
+    <div class="home-content">
+      <div class="home-content__button">
+        <app-button (click)="handleAddHubClick()" [buttonData]="buttonData"></app-button>
+      </div>
+      <form (ngSubmit)="onSubmit()" *ngIf="isAddHubPopupOpen" [formGroup]="form" class="home-content__form form">
+        <label class="form-label">
+          <p class="form-label__title">Hub Link:</p>
+          <input class="form-label__input" formControlName="hubLink" placeholder="Enter hub link" type="text"/>
+        </label>
+        <label class="form-label">
+          <p class="form-label__title">Hub id:</p>
+          <input class="form-label__input" formControlName="hubId" placeholder="Enter hub id" type="text"/>
+        </label>
+        <app-button [buttonData]="submitButtonData"></app-button>
+      </form>
+      <div class="home-content__hubs hubs">
+        <app-hub-list></app-hub-list>
+      </div>
+    </div>
+  </div>
+</div>

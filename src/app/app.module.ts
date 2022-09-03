@@ -1,44 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {CoreModule} from './core/core.module';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
-// NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { HomeModule } from './home/home.module';
-import { DetailModule } from './detail/detail.module';
-
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {HomePageComponent} from './pages/home-page/home-page.component';
+import {HeaderComponent} from './layout/header/header.component';
+import {LeftBarComponent} from './layout/left-bar/left-bar.component';
+import {SettingsPageComponent} from './pages/settings-page/settings-page.component';
+import {ButtonComponent} from './shared/components/button/button.component';
+import {HubListComponent} from './shared/components/hub-list/hub-list.component';
+import {HubComponent} from './shared/components/hub-list/hub/hub.component';
+import {QueueComponent} from './shared/components/queue/queue.component';
 
 // AoT requires an exported function for factories
-const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    HeaderComponent,
+    LeftBarComponent,
+    SettingsPageComponent,
+    ButtonComponent,
+    HubListComponent,
+    HubComponent,
+    QueueComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     CoreModule,
-    SharedModule,
-    HomeModule,
-    DetailModule,
     AppRoutingModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

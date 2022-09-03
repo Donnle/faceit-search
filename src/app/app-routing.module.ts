@@ -1,9 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './shared/components';
-
-import { HomeRoutingModule } from './home/home-routing.module';
-import { DetailRoutingModule } from './detail/detail-routing.module';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomePageComponent} from './pages/home-page/home-page.component';
+import {SettingsPageComponent} from './pages/settings-page/settings-page.component';
 
 const routes: Routes = [
   {
@@ -12,17 +10,20 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '**',
-    component: PageNotFoundComponent
+    path: 'home',
+    component: HomePageComponent,
+  },
+  {
+    path: 'settings',
+    component: SettingsPageComponent,
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-    HomeRoutingModule,
-    DetailRoutingModule
+    RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'}),
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

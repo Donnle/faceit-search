@@ -1,0 +1,3 @@
+<ul *ngIf="hubsInfo.length > 0" class="hubs-list">
+  <app-hub *ngFor="let hubInfo of hubsInfo" [hubInfo]="hubInfo"></app-hub>
+</ul>

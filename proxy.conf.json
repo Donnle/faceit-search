@@ -1,0 +1,14 @@
+{
+  "/users/*": {
+    "target": "https://api.faceit.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/queue/*": {
+    "target": "https://api.faceit.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

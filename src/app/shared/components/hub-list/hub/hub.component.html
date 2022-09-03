@@ -1,0 +1,23 @@
+<li class="hubs-list__item hub">
+  <div class="hub-image">
+    <img
+      [src]="hubInfoResponse?.avatar"
+      alt="hub">
+  </div>
+  <div class="hub-info">
+    <h2 class="hub-info__title">{{hubInfoResponse?.organizer_data?.name}}</h2>
+    <span class="hub-info__players">{{hubInfoResponse?.players_joined | number}} players</span>
+  </div>
+  <app-queue (changeIsSearchStatus)="onPlayButtonClick()" [hubInfo]="hubInfo"
+             [isSearchActive]="isSearchActive"></app-queue>
+  <div (click)="onPlayButtonClick()" *ngIf="!isSearchActive; else elseBlock" class="hub-play">
+    <span class="hub-play__img">
+      <img alt="play" src="./assets/icons/play-button.png">
+    </span>
+  </div>
+  <ng-template #elseBlock>
+    <span (click)="onPlayButtonClick()" class="hub-play__img">
+      <img alt="play" class="spin" src="./assets/icons/loader.png">
+    </span>
+  </ng-template>
+</li>

@@ -112,19 +112,24 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
+            "proxyConfig": "proxy-local.conf.json",
             "browserTarget": "angular-electron:build"
           },
           "configurations": {
             "dev": {
+              "proxyConfig": "proxy-local.conf.json",
               "browserTarget": "angular-electron:build:dev"
             },
             "production": {
+              "proxyConfig": "proxy-local.conf.json",
               "browserTarget": "angular-electron:build:production"
             },
             "web": {
+              "proxyConfig": "proxy-local.conf.json",
               "browserTarget": "angular-electron:build:web"
             },
             "web-production": {
+              "proxyConfig": "proxy-local.conf.json",
               "browserTarget": "angular-electron:build:web-production"
             }
           }

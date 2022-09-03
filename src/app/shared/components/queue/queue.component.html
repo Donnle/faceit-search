@@ -1,0 +1,10 @@
+<div *ngIf="userInQueueInfo?.payload.length > 0; else elseBlock" class="queue">
+  <span class="queue__username">{{userInQueueInfo?.payload[0]?.nickname}}</span>
+  <div class="queue__level">
+    <img [src]="'./assets/icons/faceit' + userInQueueInfo?.payload[0]?.skillLevel + '.svg'" alt="level"/>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  Queue clear
+</ng-template>

@@ -1,0 +1,70 @@
+.hub {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 70px 1fr 1fr 55px;
+  grid-template-rows: 55px;
+  gap: 10px;
+
+  overflow: hidden;
+  background-color: var(--dark-gray-bg);
+  border-radius: 5px;
+
+  &-image {
+    img {
+      width: 70px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-info {
+    padding-right: 30px;
+
+    &__title {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.15em;
+      padding-bottom: 2px;
+    }
+
+    &__players {
+      font-size: 12px;
+      line-height: 1.15em;
+      color: var(--light-gray-color);
+    }
+  }
+
+  &-play {
+    height: 100%;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+
+    &__img {
+      width: 55px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--dark-green);
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--light-gray-color);
+      }
+
+      .spin {
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}

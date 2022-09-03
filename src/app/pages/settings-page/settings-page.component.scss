@@ -1,0 +1,83 @@
+.settings {
+  height: 100%;
+
+  &-wrapper {
+    height: 100%;
+    padding: 15px;
+  }
+
+  &-content {
+    height: 100%;
+    position: relative;
+
+    &__error {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      span {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+  }
+}
+
+.form {
+  &-field {
+    display: block;
+    padding-bottom: 10px;
+
+    h3 {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 400;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--light-gray-color);
+      padding-bottom: 5px;
+    }
+
+    & > input {
+      display: block;
+      border-radius: 5px;
+      border: 1px solid var(--black);
+      padding: 5px;
+      width: 371px;
+    }
+
+    &__flexbox {
+      display: flex;
+      gap: 5px;
+
+      & > input {
+        width: 41px;
+        border-radius: 5px;
+        border: 1px solid var(--black);
+        padding: 5px;
+        text-align: center;
+      }
+
+      &-text {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        & > span {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  app-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
