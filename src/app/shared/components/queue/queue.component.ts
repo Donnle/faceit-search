@@ -35,7 +35,8 @@ export class QueueComponent implements OnInit, OnDestroy {
   userInQueueInfo: UserInfo;
   subscriber: Subscription;
   userData: UserData;
-  postSubscriber: Subscription;
+  startSearchSubscriber: Subscription;
+  sendMessageSubscriber: Subscription;
 
   constructor(
     private dataService: DataService,
@@ -66,11 +67,18 @@ export class QueueComponent implements OnInit, OnDestroy {
           && res.payload[0].skillLevel <= this.userData.maxLevel
           && !isOnBlackList
         ) {
-          this.postSubscriber = this.requestsService.startSearch(this.hubInfo).subscribe();
-          this.postSubscriber.unsubscribe();
+          const text = `nickname: ${res.payload[0].nickname}, skillLvl: ${res.payload[0].skillLevel}`;
+
+          this.startSearchSubscriber = this.requestsService.startSearch(this.hubInfo).subscribe();
+          this.startSearchSubscriber.unsubscribe();
+
+          this.sendMessageSubscriber = this.requestsService.sendMessageToTelegram(text).subscribe();
+          this.sendMessageSubscriber.unsubscribe();
+
           this.changeIsSearchStatus.emit();
           console.log('Player was found');
-          console.log(`nickname: ${res.payload[0].nickname}, skillLvl: ${res.payload[0].skillLevel}`);
+          console.log(text);
+
         } else if (this.isSearchActive && res.payload.length > 0 && isOnBlackList) {
           console.log(`User ${res.payload[0].nickname} on black list`);
         } else if (this.isSearchActive && res.payload.length > 0) {

@@ -12,6 +12,7 @@ import {UserInfo} from '../interfaces/user-info';
 })
 export class RequestsService {
   userData: UserData;
+  telegramAPIKey = '5753390467:AAF9RoTMZbYCl8_z3s-J70Z7onqUMKkJs9E';
 
   constructor(
     private http: HttpClient,
@@ -21,6 +22,16 @@ export class RequestsService {
     this.dataService.userData$.subscribe((userData) => {
       this.userData = userData;
     });
+  }
+
+  sendMessageToTelegram(text: string) {
+    return this.http.post(
+      `https://api.telegram.org/bot${this.telegramAPIKey}/sendMessage`,
+      {
+        chat_id: '808908111', // eslint-disable-line
+        text
+      }
+    );
   }
 
   startSearch(hubInfo: HubInfo) {
