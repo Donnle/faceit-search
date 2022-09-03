@@ -58,16 +58,21 @@ export class QueueComponent implements OnInit, OnDestroy {
       startWith(0),
       switchMap(() => this.requestsService.getUserInSearchInfo(this.hubInfo)),
       map((res: UserInfo) => {
+        const isOnBlackList = this.userData.blackList.includes(res.payload[0].nickname);
         if (
           this.isSearchActive
           && res.payload.length > 0
           && res.payload[0].skillLevel >= this.userData.minLevel
           && res.payload[0].skillLevel <= this.userData.maxLevel
+          && !isOnBlackList
         ) {
           this.postSubscriber = this.requestsService.startSearch(this.hubInfo).subscribe();
+          this.postSubscriber.unsubscribe();
           this.changeIsSearchStatus.emit();
           console.log('Player was found');
           console.log(`nickname: ${res.payload[0].nickname}, skillLvl: ${res.payload[0].skillLevel}`);
+        } else if (this.isSearchActive && res.payload.length > 0 && isOnBlackList) {
+          console.log(`User ${res.payload[0].nickname} on black list`);
         } else if (this.isSearchActive && res.payload.length > 0) {
           console.log('User lvl is not in diapason');
         } else if (res.payload.length === 0) {
@@ -77,7 +82,6 @@ export class QueueComponent implements OnInit, OnDestroy {
             `nickname: ${res.payload[0].nickname}, skillLvl: ${res.payload[0].skillLevel}`
           );
         }
-        this.postSubscriber.unsubscribe();
         return res;
       })
     );

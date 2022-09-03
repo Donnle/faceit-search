@@ -4,4 +4,5 @@ export interface UserData {
   minLevel?: number;
   maxLevel?: number;
   userId?: string;
+  blackList?: string[];
 }

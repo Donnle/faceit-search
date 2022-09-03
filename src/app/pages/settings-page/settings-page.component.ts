@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ButtonData} from '../../shared/interfaces/button-data';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {DataService} from '../../shared/services/data.service';
 import {UserData} from '../../shared/interfaces/user-data';
 
@@ -18,7 +18,7 @@ export class SettingsPageComponent {
     name: 'SAVE',
     classMode: 'gray'
   };
-  form: any;
+  form: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService) {
     this.dataService.userData$.subscribe((userData: UserData) => {
@@ -28,7 +28,8 @@ export class SettingsPageComponent {
       bearer: this.userData.bearer || '',
       nickname: this.userData.nickname || '',
       minLevel: this.userData.minLevel || '',
-      maxLevel: this.userData.maxLevel || ''
+      maxLevel: this.userData.maxLevel || '',
+      blackList: this.userData.blackList.join(', ') || ''
     });
   }
 

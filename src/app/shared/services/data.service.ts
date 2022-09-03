@@ -22,8 +22,10 @@ export class DataService {
   setUserData(newUserData: UserData) {
     this.getUserId(newUserData.nickname).subscribe((userData) => {
       const {id: userId} = userData.payload;
-      localStorage.setItem('data', JSON.stringify({...newUserData, userId}));
-      this.userData$.next({...newUserData, userId});
+      const blackList = newUserData.blackList.toString().split(',').map((username) => username.trim());
+
+      localStorage.setItem('data', JSON.stringify({...newUserData, blackList, userId}));
+      this.userData$.next({...newUserData, blackList, userId});
     });
   }
 
